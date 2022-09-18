@@ -22,4 +22,9 @@ server.get("/uh-oh", (request, response) => {
   response.status(500).send("something went wrong");
 });
 
+server.get("/search", (request, response) => {
+  const keyword = request.query.keyword;
+  response.send(`<p>You searched for ${keyword}</p>`);
+});
+
 module.exports = server;

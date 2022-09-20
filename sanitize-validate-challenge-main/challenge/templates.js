@@ -26,10 +26,15 @@ function postItem(post) {
   const prettyDate = date.toLocaleString("en-GB");
   return `
     <li>
-      <p>${post.message}</p>
-      <p>—${post.nickname} | ${prettyDate}</p>
+      <p>${sanitize(post.message)}</p>
+      <p>—${sanitize(post.nickname)} | ${prettyDate}</p>
     </li>
   `;
+}
+
+function sanitize(str) {
+  //Better to use replaceAll as replace only replaces the first instance
+  return str.replaceAll("<", "&lt;");
 }
 
 function layout(title, content) {

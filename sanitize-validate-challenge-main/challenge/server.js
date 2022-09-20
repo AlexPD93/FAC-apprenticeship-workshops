@@ -19,8 +19,3 @@ server.post("/", express.urlencoded({ extended: false }), (req, res) => {
 });
 
 module.exports = server;
-
-function sanitize(str) {
-  const newStr = str.replace("<", "&lt");
-  return newStr;
-}

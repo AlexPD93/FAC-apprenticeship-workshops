@@ -34,7 +34,8 @@ function postItem(post) {
 
 function sanitize(str) {
   //Better to use replaceAll as replace only replaces the first instance
-  return str.replaceAll("<", "&lt;");
+  const newStr = str.replaceAll("<", "&lt;");
+  return newStr;
 }
 
 function layout(title, content) {

@@ -6,8 +6,6 @@ const insert_task = db.prepare(/*sql*/ `
   RETURNING id, content, created_at, complete
 `);
 
-// When values are $content and $complete createTask() runs error : too many parameter values were provided
-
 const select_tasks = db.prepare(/*sql*/ `
   SELECT id, content, TIME(created_at) AS created_at, complete FROM tasks
 `);

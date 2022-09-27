@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "test": "SET DB_FILE=test.sqlite & node -r ./database/seed.js --test",
+    "test:1": "SET DB_FILE=test.sqlite & node -r ./database/seed.js test/one.test.js",
+    "test:2": "SET DB_FILE=test.sqlite & node -r ./database/seed.js test/two.test.js",
+    "test:3": "SET DB_FILE=test.sqlite & node -r ./database/seed.js test/three.test.js",
+    "test:4": "SET DB_FILE=test.sqlite & node -r ./database/seed.js test/four.test.js",
+    "test:5": "SET DB_FILE=test.sqlite & node -r ./database/seed.js test/five.test.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^7.6.2"
+  }
+}

@@ -1,3 +1,5 @@
+const { createSession } = require("../model/session.js");
+const bcrypt = require("bcryptjs");
 const { getUserByEmail } = require("../model/user.js");
 const { Layout } = require("../templates.js");
 
@@ -29,7 +31,35 @@ function post(req, res) {
   if (!email || !password || !user) {
     return res.status(400).send("<h1>Login failed</h1>");
   }
-  res.send("to-do");
+  bcrypt.compare(password, user.hash).then((match) => {
+    if (!match) {
+      return res.status(400).send("<h1>Login failed</h1>");
+    } else {
+      const sessionId = createSession(user.id);
+      res.cookie("sid", sessionId, {
+        signed: true,
+        httpOnly: true,
+        maxAge: 6000,
+        sameSite: "lax",
+      });
+      res.redirect(`/confessions/${user.id}`);
+    }
+  });
+  // Use getUserByEmail from model/user.js to get the user who is trying to log in
+
+  // If there's no user with that email send a 400 error response
+
+  // Compare the submitted password to the stored user's hash
+
+  // If they don't match send the same error response
+
+  // Important: don't say exactly what went wrong, otherwise you'll give attackers information like which emails have accounts in your app
+
+  // If they match use the createSession function you wrote to insert a new session into the DB
+
+  // Set a signed sid cookie containing the session ID
+
+  // Redirect to the new user's confession page (e.g. /confessions/11)
   /**
    * [1] Compare submitted password to stored hash
    * [2] If no match redirect back to same page so user can retry

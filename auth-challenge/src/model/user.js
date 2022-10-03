@@ -1,7 +1,7 @@
 const db = require("../database/db.js");
 
 const insert_user = db.prepare(/*sql*/ `
-  INSERT INTO users (email, hash)
+  INSERT or REPLACE INTO users (email, hash)
   VALUES ($email, $hash)
   RETURNING id
 `);

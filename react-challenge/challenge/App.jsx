@@ -1,5 +1,7 @@
+import Greeting from "./Greeting";
 function App() {
-  return <main>hi</main>;
+  const greetingName = "Alex";
+  return <Greeting greetingName={greetingName} />;
 }
 
 export default App;

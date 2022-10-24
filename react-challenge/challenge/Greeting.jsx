@@ -1,7 +1,5 @@
-import "./index.css";
-
 function Greeting(props) {
-  return <p>Hello {props.greetingName}</p>;
+  return <p>Hello {props.name}</p>;
 }
 
 export default Greeting;
